@@ -161,7 +161,7 @@ let block1Stim = {
     on_finish: function (data) {
         console.log(data.key_press)
         },
-    trial_duration: 2000,
+    trial_ends_after_audio: true
 }
 
 let listeningStim = { 
@@ -173,7 +173,7 @@ let listeningStim = {
     on_finish: function (data) {
         console.log(data.key_press)
         },
-    trial_duration: 2000,
+    // trial_ends_after_audio: true
 }
 
 let block2Stim = { 
@@ -185,7 +185,7 @@ let block2Stim = {
     on_finish: function (data) {
         console.log(data.key_press)
         },
-    trial_duration: 2000,
+    trial_ends_after_audio: true
 }
 
 let response = { 
