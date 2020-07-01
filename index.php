@@ -11,7 +11,7 @@ file_put_contents($name, $data);
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tapping Task</title>  <!-- This is for changing the title -->
+    <title>Sine Wave Speech</title>  <!-- This is for changing the title -->
     <script async src="js/timer.js"></script>
     <!--<script type="text/javascript" src="js/stimuli.js"></script>-->
     <script src="jsPsych/jspsych.js"></script>
@@ -175,7 +175,7 @@ file_put_contents($name, $data);
 
 
     let workerID = prompt( 'Subject ID' );
-    var audio = ["Stimuli/50msec.wav"];
+    var audio = ["stim/50msec.wav"];
 
     /* START TRAINING TRIAL FOR PARTICIPANTS */
 
@@ -214,7 +214,7 @@ file_put_contents($name, $data);
       response_ends_trial: false,
       trial_ends_after_audio: false,
       trial_duration: 250,
-      stimulus: "Stimuli/50msec.wav",
+      stimulus: audio,
       on_finish: function (data) {
           console.log(data.key_press)
           },
