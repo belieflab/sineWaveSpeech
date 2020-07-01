@@ -65,7 +65,7 @@ const unaltered = ['0102', '0103', '0106', '0109', '0110', '0112', '0114', '0115
 
 let intel_45 = [];
 for (let i = 0; i < intel.length ; i++){
-    intel_45.push("sounds/intel_45/I_BKBQ0"+intel[i]+".WAV")
+    intel_45.push("sounds/intel_45/I_BKBQ0"+intel[i]+".wav")
 }
 
 let unintel_45 = [];
