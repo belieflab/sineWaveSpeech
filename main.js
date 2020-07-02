@@ -3,7 +3,6 @@
 let procedureInstructions = { //This loops over the object
     timeline: [instructions_1, instructions_2], //if you put fixation in front and the feedback after, it will display those in that order
     randomize_order: false,// This is the outer procedure, looping over the stimuli
-    // timeline_variables: unintel_stim
 }
 
 let procedureTestBlock1 = { //This loops over the object
@@ -15,7 +14,7 @@ let procedureTestBlock1 = { //This loops over the object
 let procedureListeningBlock = { //This loops over the object
     timeline: [listeningStim, pause], //if you put fixation in front and the feedback after, it will display those in that order
     randomize_order: false,// This is the outer procedure, looping over the stimuli
-    timeline_variables: unaltered_stim,
+    timeline_variables: unaltered_stim_shuffle,
 }
 
 let procedureTestBlock2 = { //This loops over the object

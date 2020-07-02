@@ -37,3 +37,5 @@ let unaltered_stim=[];
 let full_stim = intel_stim.concat(unintel_stim);
 
 let full_stim_shuffle = jsPsych.randomization.repeat(full_stim, 1); //shuffled array no repeats
+
+let unaltered_stim_shuffle = jsPsych.randomization.repeat(unaltered_stim.shuffle, 1);
