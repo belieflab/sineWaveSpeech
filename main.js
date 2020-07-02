@@ -101,6 +101,7 @@ for (let i = 0; i < unintel.length ; i++){
     full_stim.push({stimulus: unintel_45[i], data: {test_part: 'intel', correct_response: '1'}},)
 }
 let full_stim_shuffle = jsPsych.randomization.repeat(full_stim, 1); //shuffled array no repeats
+// let full_stim_shuffle = full_stim;
 
 
 
@@ -221,7 +222,7 @@ let procedureTestBlock1 = { //This loops over the object
     timeline: [fixation, block1Stim, response], //if you put fixation in front and the feedback after, it will display those in that order
     //timeline_variables: stimuliTone,
     randomize_order: false,// This is the outer procedure, looping over the stimuli
-    timeline_variables: full_stim_shuffle.slice(0,44),
+    timeline_variables: full_stim_shuffle.slice(0,45),
 }
 
 let procedureListeningBlock = { //This loops over the object
@@ -236,7 +237,7 @@ let procedureTestBlock2 = { //This loops over the object
     timeline: [fixation, block1Stim, response], //if you put fixation in front and the feedback after, it will display those in that order
     //timeline_variables: stimuliTone,
     randomize_order: false,// This is the outer procedure, looping over the stimuli
-    timeline_variables: full_stim_shuffle.slice(45,89),
+    timeline_variables: full_stim_shuffle.slice(45,90),
 }
 
 timeline.push(welcome)
