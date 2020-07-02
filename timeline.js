@@ -33,7 +33,7 @@ let beginListeningBlock = {
     on_finish: function (data) {
         console.log(data.key_press)
         },
-    trial_duration: 5000,
+    trial_duration: 10000,
 };
 
 let beginSecondBlock = { 
@@ -44,7 +44,7 @@ let beginSecondBlock = {
     on_finish: function (data) {
         console.log(data.key_press)
         },
-    trial_duration: 5000,
+    trial_duration: 10000,
 };
 
 let fixation = { 
@@ -79,6 +79,7 @@ let listeningStim = {
     on_finish: function (data) {
         console.log(data.key_press)
         },
+    trial_ends_after_audio: true
 };
 
 let block2Stim = { 
@@ -103,4 +104,15 @@ let response = {
     on_finish: function (data) {
         console.log(data.key_press)
     },
+};
+
+let pause = { 
+    type: 'html-keyboard-response',
+    stimulus: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
+    choices: jsPsych.NO_KEYS,
+    response_ends_trial: false,
+    on_finish: function (data) {
+        console.log(data.key_press)
+        },
+    trial_duration: 500,
 };
