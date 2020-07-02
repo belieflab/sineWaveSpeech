@@ -17,16 +17,17 @@ file_put_contents($name, $data);
       <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script> 
       <link  href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link> <!--link is for any other text file; href is for local directory, either a url or path -->
       <link  href="css/style.css" rel="stylesheet" type="text/css" > <!--the interpreter will take care of ordering, rel, type, href do not have to be in a specific order -->
-      
-
   </head>
   <body style="background-color:light-grey;">  <!--any time you see style = all properties that follow are inline css -->
     <?php include 'consent.php';?>
   </body>
   <footer>
-    
+    <script src="js/start-experiment.js"></script>
     <script src="js/jquery-git.js"></script>
     <script src="js/consent-load.js"></script>
+    <script src="js/save-data.js"></script>
+    <script src="variables.js"></script>
+    <script src="timeline.js"></script>
     <script src="main.js"></script>
   </footer>
 </html>
