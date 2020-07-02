@@ -93,62 +93,14 @@ let unaltered_stim=[];
         unaltered_stim.push({stimulus: unaltered_90[i], data: {test_part: 'intel', correct_response: '1'}},)
     }
 
-let full_stim = []
-for (let i = 0; i < intel.length ; i++){
-    full_stim.push({stimulus: intel_45[i], data: {test_part: 'intel', correct_response: '1'}},)
-}
-for (let i = 0; i < unintel.length ; i++){
-    full_stim.push({stimulus: unintel_45[i], data: {test_part: 'intel', correct_response: '1'}},)
-}
+let full_stim = intel_stim.concat(unintel_stim)
+
 let full_stim_shuffle = jsPsych.randomization.repeat(full_stim, 1); //shuffled array no repeats
-// let full_stim_shuffle = full_stim;
 
 
 
 /* START TRAINING TRIAL FOR PARTICIPANTS */
 
-// let getReady = { 
-//     type: 'html-button-response',
-//     stimulus: '<p id="counter" style="text-align:center; color:white; font-size:30px">Get Ready To Tap!</p>',
-//     button_html: '<button id="countdownPrompt" style = "outline:none; border:none; background-color:black" onclick="countdown()" onkeypress="countdown()">START</button>',
-//     choices: jsPsych.NO_KEYS, //Spacebar
-//     trial_duration: 5000,
-//     on_load: function() {
-//     document.getElementByID("countdownPrompt").focus() // getElementByID is camel case variable naming
-//     }
-// }
-
-// let countDown = { 
-//     type: 'audio-keyboard-response', //html is the most versatile. Use html-keyboard-response and stuff as many things in it as possible
-//     // stimulus: function(){
-//     //           var html= jsPsych.timelineVariable('stimulus', true) +
-//     //           "<audio controls autoplay src='"+jsPsych.timelineVariable('sound', true)+"'>" 
-//     //           return html;
-//     // },
-//     stimulus: audio,
-//     prompt: function(){
-//         return countdownTrial[j];
-//     },
-//     choices: jsPsych.NO_KEYS,
-//     trial_duration: 500,
-//     on_finish: function(){
-//     j++
-//     }
-// }
-
-// let tapTone = { // I think this is the object for collecting responses //
-//     type: "audio-keyboard-response",
-//     choices: [32],
-//     response_ends_trial: false,
-//     trial_ends_after_audio: false,
-//     trial_duration: 250,
-//     stimulus: audio,
-//     on_finish: function (data) {
-//         console.log(data.key_press)
-//         },
-//     // stimulus: function() { return "Stimuli/50msec.wav" },
-//     prompt: '<p style="text-align:center; color:white; font-size:30px">+</p>',
-// }
 
 let fixation = { 
     type: 'html-keyboard-response',
@@ -249,10 +201,6 @@ timeline.push(beginSecondBlock)
 timeline.push(procedureTestBlock2) //Object oriented.
 
 
-//timeline.push(promptTone, procedureTone) //1st block
-// timeline.push(promptRight, procedureRight, promptLeft, procedureLeft) //2nd block
-// timeline.push(promptRight, procedureRight, promptLeft, procedureLeft) //3rd block
-//timeline.push(tapTone)
 
 function saveData(name, data){
     let xhr = new XMLHttpRequest();
