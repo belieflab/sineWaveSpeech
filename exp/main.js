@@ -30,3 +30,4 @@ timeline.push(beginListeningBlock)
 timeline.push(procedureListeningBlock) //Object oriented.
 timeline.push(beginSecondBlock)
 timeline.push(procedureTestBlock2) //Object oriented.
+timeline.push(end)

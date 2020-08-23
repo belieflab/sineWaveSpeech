@@ -116,3 +116,15 @@ let pause = {
         },
     trial_duration: 500,
 };
+
+
+let end = { 
+    type: 'html-keyboard-response',
+    stimulus: '<p id="counter" style="text-align:center; color:white; font-size:30px">This is the end of the experiment.</p>',
+    choices: jsPsych.NO_KEYS,
+    response_ends_trial: false,
+    on_finish: function (data) {
+        console.log(data.key_press)
+        },
+    trial_duration: 500,
+};
