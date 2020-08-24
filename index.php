@@ -23,7 +23,7 @@ file_put_contents($name, $data);
   </body>
   <footer>
     <script src="js/jquery-git.js"></script>
-    <script src="exp/config.js"></script>
+    <script src="exp/conf.js"></script>
     <script src="exp/fn.js"></script>
     <script src="exp/var.js"></script>
     <script src="exp/timeline.js"></script>

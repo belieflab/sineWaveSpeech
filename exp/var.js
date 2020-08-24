@@ -21,16 +21,16 @@ let intel_stim=[];
 
 let unintel_stim=[];
     for (let i = 0; i < unintel.length ; i++){
-        unintel_stim.push({stimulus: unintel_45[i], data: {test_part: 'intel'}});
+        unintel_stim.push({stimulus: unintel_45[i], data: {test_part: 'unintel'}});
     }
 
 let unaltered_stim=[];
     for (let i = 0; i < unaltered.length ; i++){
-        unaltered_stim.push({stimulus: unaltered_90[i], data: {test_part: 'intel'}});
+        unaltered_stim.push({stimulus: unaltered_90[i], data: {test_part: 'unaltered'}});
     }
 
 let full_stim = intel_stim.concat(unintel_stim);
 
 let full_stim_shuffle = jsPsych.randomization.repeat(full_stim, 1); //shuffled array no repeats
 
-let unaltered_stim_shuffle = jsPsych.randomization.repeat(unaltered_stim.shuffle, 1);
+let unaltered_stim_shuffle = jsPsych.randomization.repeat(unaltered_stim, 1);

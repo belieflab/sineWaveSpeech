@@ -27,7 +27,7 @@ let instructions_2 = {
 let beginListeningBlock = { 
     type: 'html-keyboard-response',
     stimulus: '<p style="color:white;">You will now hear some short sentences.</p>' +
-    '<p style="color:white;">You do not need to respond, just listen </p>',
+    '<p style="color:white;">You do not need to respond, just listen.</p>',
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
     on_finish: function (data) {
