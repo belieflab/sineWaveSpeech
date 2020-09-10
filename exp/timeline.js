@@ -64,6 +64,7 @@ let block1Stim = {
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
+    // data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         console.log(data.key_press)
         },
@@ -76,6 +77,7 @@ let listeningStim = {
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
+    data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         console.log(data.key_press)
         },
@@ -88,6 +90,7 @@ let block2Stim = {
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
+    // data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         console.log(data.key_press)
         },
@@ -101,9 +104,10 @@ let response = {
     '<p style="color:white;">Press "0" for NO</p>',
     choices: ['1', '0'],
     response_ends_trial: true,
+    data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
-        data.response = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press)
-        console.log(data.key_press)
+        data.response = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press);
+        console.log(data.key_press);
     },
 };
 
