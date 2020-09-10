@@ -12,6 +12,7 @@ file_put_contents($name, $data);
 <html>
   <head>
     <title>Sine Wave Speech</title>  <!-- This is for changing the title -->
+    <script src="db/validate.js"></script>
     <script src="jsPsych/jspsych.js"></script>
       <script src="jsPsych/plugins/jspsych-audio-keyboard-response.js"></script>
       <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script> 
@@ -19,14 +20,14 @@ file_put_contents($name, $data);
       <link  href="css/style.css" rel="stylesheet" type="text/css" > <!--the interpreter will take care of ordering, rel, type, href do not have to be in a specific order -->
   </head>
   <body style="background-color:light-grey;">  <!--any time you see style = all properties that follow are inline css -->
-    <?php include_once 'include/consent.php';?>
+    <?php include_once 'include/intake.php';?>
   </body>
   <footer>
     <script src="js/jquery-git.js"></script>
     <script src="exp/conf.js"></script>
     <script src="exp/fn.js"></script>
-    <script src="exp/var.js"></script>
-    <script src="exp/timeline.js"></script>
-    <script src="exp/main.js"></script>
+    <!-- <script src="exp/var.js"></script> -->
+    <!-- <script src="exp/timeline.js"></script>
+    <script src="exp/main.js"></script> -->
   </footer>
 </html>

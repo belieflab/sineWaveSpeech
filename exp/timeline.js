@@ -96,12 +96,13 @@ let block2Stim = {
 
 let response = { 
     type: 'html-keyboard-response',
-    stimulus: '<p style="color:white;">Could you hear speech in the audio?</p>' +
+    stimulus: '<p style="color:white;">Could you hear a complete sentence in the audio?</p>' +
     '<p style="color:white;">Press "1" for YES</p>' +
     '<p style="color:white;">Press "0" for NO</p>',
     choices: ['1', '0'],
     response_ends_trial: true,
     on_finish: function (data) {
+        data.response = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press)
         console.log(data.key_press)
     },
 };
