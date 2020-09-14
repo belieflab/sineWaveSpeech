@@ -64,8 +64,8 @@ let block1Stim = {
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
+    // data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
-        data.index=experimentIterator;
         experimentIterator++; 
         console.log(data.key_press)
         },
@@ -80,7 +80,16 @@ let listeningStim = {
     response_ends_trial: false,
     data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
-        data.index=experimentIterator;
+        data.subjectKey = 'GUID';
+        data.src_subject_id = workerID;
+        data.site = siteNumber;
+        data.interview_date = 'must be formatted exactly thusly: MM/DD/YYYY';
+        data.session = '??';
+        data.sex = '??';
+        data.sample_group = '?? maybe 1=Clinical; 2=Healthy control';
+        data.interview_age = 'integer number of months';
+        data.response = null;
+        data.index = experimentIterator;
         experimentIterator++; 
         console.log(data.key_press)
         },
@@ -93,8 +102,8 @@ let block2Stim = {
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
+    // data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
-        data.index=experimentIterator;
         experimentIterator++; 
         console.log(data.key_press)
         },
@@ -118,6 +127,7 @@ let response = {
         data.sex = '??';
         data.sample_group = '?? maybe 1=Clinical; 2=Healthy control';
         data.interview_age = 'integer number of months';
+        data.index = experimentIterator;
         data.response = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press);
         console.log(data.key_press);
     },
