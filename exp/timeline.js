@@ -4,46 +4,50 @@ let timeline = [];
 /* define welcome message trial */
 let welcome = {
     type: "html-keyboard-response",
-    stimulus: '<p style="color:white;">Welcome to the experiment!</p>' + 
+    stimulus: '<h1 style="color:white;">Welcome to the experiment!</h1>' + 
     '<p style="color:white;">Press any key to continue.</p>', //by default, jsPysch is white background and black text
 };
 
 /* define instructions trial */
 let instructions_1 = {
     type: "html-keyboard-response",
-    stimulus: '<p style="color:white;">In this task you will listen to a series of audio clips.</p>' +
-    '<p style="color:white;">The task is split into two test blocks, with a listening block in-between.</p>'+
-    '<p style="color:white;">In the test blocks you will listen to a series of audio clips, and will have to indicate whether you heard speech in each clip.</p>'+
-    '<p style="color:white;">In the listening block you just have to listen to several audio recordings. No response is required.</p>'+
-    '<p style="color:white;">Press any key to continue to the study.</p>',
+    stimulus: '<h2 style="color:white;">In this task you will listen to a series of audio clips.</h2>' +
+    '<h3 style="color:white;">The task is split into two test blocks, with a listening block in-between.</h3>'+
+    '<p style="color:white;">Press any key to continue.</p>',
 };
 
 let instructions_2 = {
     type: "html-keyboard-response",
-    stimulus: '<p style="color:white;">We will now begin the first test block .</p> ' +
+    stimulus: '<h2 style="color:white;">In the test blocks you will listen to a series of audio clips, and will have to indicate whether you heard speech in each clip.</h2>'+
+    '<p style="color:white;">Press any key to continue.</p>',
+};
+
+let instructions_3 = {
+    type: "html-keyboard-response",
+    stimulus: '<h2 style="color:white;">In the listening block you just have to listen to several audio recordings. No response is required.</h2>'+
+    '<p style="color:white;">Press any key to continue.</p>',
+};
+
+let instructions_4 = {
+    type: "html-keyboard-response",
+    stimulus: '<h2 style="color:white;">We will now begin the first test block.</h2> ' +
         '<p style="color:white;">Press any key to begin.</p>',
 };
 
 let beginListeningBlock = { 
     type: 'html-keyboard-response',
-    stimulus: '<p style="color:white;">You will now hear some short sentences.</p>' +
+    stimulus: '<h2 style="color:white;">You will now hear some short sentences.</h2>' +
     '<p style="color:white;">You do not need to respond, just listen.</p>',
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
-    on_finish: function (data) {
-        console.log(data.key_press)
-        },
     trial_duration: 10000,
 };
 
 let beginSecondBlock = { 
     type: 'html-keyboard-response',
-    stimulus: '<p style="color:white;">We will now begin the second test block.</p>',
+    stimulus: '<h2 style="color:white;">We will now begin the second test block.</h2',
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
-    on_finish: function (data) {
-        console.log(data.key_press)
-        },
     trial_duration: 10000,
 };
 
@@ -52,9 +56,6 @@ let fixation = {
     stimulus: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
-    on_finish: function (data) {
-        console.log(data.key_press)
-        },
     trial_duration: 1000,
 };
 
@@ -67,7 +68,6 @@ let block1Stim = {
     // data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         experimentIterator++; 
-        console.log(data.key_press)
         },
     trial_ends_after_audio: true
 };
@@ -91,7 +91,6 @@ let listeningStim = {
         data.response = null;
         data.index = experimentIterator;
         experimentIterator++; 
-        console.log(data.key_press)
         },
     trial_ends_after_audio: true
 };
@@ -105,16 +104,15 @@ let block2Stim = {
     // data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         experimentIterator++; 
-        console.log(data.key_press)
         },
     trial_ends_after_audio: true
 };
 
 let response = { 
     type: 'html-keyboard-response',
-    stimulus: '<p style="color:white;">Could you hear a complete sentence in the audio?</p>' +
-    '<p style="color:white;">Press "1" for YES</p>' +
-    '<p style="color:white;">Press "0" for NO</p>',
+    // stimulus: '<p style="color:white;">Could you hear a complete sentence in the audio?</p>' +
+    stimulus: '<h1 style="color:white;">Could you hear speech in the audio?</h1>' +
+    '<h3 style="color:white;">Press "1" for YES &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press "0" for NO</h3>',
     choices: ['1', '0'],
     response_ends_trial: true,
     data: jsPsych.timelineVariable('data'),
@@ -129,7 +127,6 @@ let response = {
         data.interview_age = 'integer number of months';
         data.index = experimentIterator;
         data.response = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press);
-        console.log(data.key_press);
     },
 };
 
@@ -138,9 +135,6 @@ let pause = {
     stimulus: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
-    on_finish: function (data) {
-        console.log(data.key_press)
-        },
     trial_duration: 500,
 };
 
@@ -150,8 +144,5 @@ let end = {
     stimulus: '<p id="counter" style="text-align:center; color:white; font-size:30px">This is the end of the experiment.</p>',
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
-    on_finish: function (data) {
-        console.log(data.key_press)
-        },
-    trial_duration: 500,
+    trial_duration: 5000,
 };
