@@ -89,6 +89,7 @@
 
     $.getScript("exp/var.js");
     $.getScript("exp/timeline.js");
+    setTimeout(1000);
     $.getScript("exp/main.js");
 
     // $.load("include/consent.php");
