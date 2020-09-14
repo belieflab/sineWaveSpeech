@@ -64,7 +64,6 @@ let block1Stim = {
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
-    // data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         console.log(data.key_press)
         },
@@ -90,7 +89,6 @@ let block2Stim = {
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
-    // data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         console.log(data.key_press)
         },
