@@ -12,7 +12,7 @@ let welcome = {
 let instructions_1 = {
     type: "html-keyboard-response",
     stimulus: '<h2 style="color:white;">In this task you will listen to a series of audio clips.</h2>' +
-    '<h3 style="color:white;">The task is split into two test blocks, with a listening block in-between.</h3>'+
+    '<h2 style="color:white;">The task is split into two test blocks, with a listening block in-between.</h2>'+
     '<p style="color:white;">Press any key to continue.</p>',
 };
 
