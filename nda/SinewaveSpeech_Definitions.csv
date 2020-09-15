@@ -4,8 +4,8 @@ Previously made by Denise,src_subject_id,String,20,Required,Subject ID how it's 
 Previously made by Denise,interview_date,Date,,Required,Date on which the interview/genetic test/sampling/imaging/biospecimen was completed. MM/DD/YYYY,,Required field,"sessiondate,studyday"
 Previously made by Denise,interview_age,Integer,,Required,Age in months at the time of the interview/test/sampling/imaging.,0 :: 1260,"Age is rounded to chronological month. If the research participant is 15-days-old at time of interview, the appropriate value would be 0 months. If the participant is 16-days-old, the value would be 1 month.",age
 Previously made by Denise,sex,String,20,Required,Sex of the subject,M;F; O; NR,M = Male; F = Female; O=Other; NR = Not reported,"gender,sex"
-"This variable is ""stimulus"" in the omnibus output, but transformed to ""stimid"" by my R code. The original variable has a bunch of filepath info and I extracted the image file title (e.g., ""my_bitmap12.3"")",stimid,String,,Recommended,Stimulus ID based on audio file name,,,
-"Originally output as ""trial_index""",order,Integer,,Recommended,Identifies the position of the stimulus within the task,0 :: 455,,
+"This variable is ""stimulus"" in the omnibus output, but transformed to ""stimid"" by my R code. The original variable has a bunch of filepath info and I extracted the image file title (e.g., ""my_bitmap12.3"")",stim,String,,Recommended,Stimulus ID based on audio file name,,,
+"Originally output as ""trial_index""",index,Integer,,Recommended,Identifies the position of the stimulus within the task,0 :: 455,,
 ,test_part,String,,Recommended,Identifies the task condition,intel; unintel,"For ""intel"" trials, participants hear masked speech patterns; in ""unintel"" trials, participants hear audio with no speech patterns present.",
 ,rt,Integer,,Recommended,Reflects time elapsed since response options emerge,,,
 ,response,Integer,,Recommended,Indicates if subject identified a face or not,0; 1,"0 = ""no"" (speech is not present) and 1 = ""yes"" (speech is present)",
