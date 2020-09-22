@@ -12,7 +12,7 @@ file_put_contents($name, $data);
 <html>
   <head>
     <title>Sine Wave Speech</title>  <!-- This is for changing the title -->
-    <script src="db/validate.js"></script>
+    <script src="db/submit.js"></script>
     <script src="jsPsych/jspsych.js"></script>
       <script src="jsPsych/plugins/jspsych-audio-keyboard-response.js"></script>
       <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script> 
@@ -26,8 +26,8 @@ file_put_contents($name, $data);
     <script src="js/jquery-git.js"></script>
     <script src="exp/conf.js"></script>
     <script src="exp/fn.js"></script>
-    <!-- <script src="exp/var.js"></script> -->
-    <!-- <script src="exp/timeline.js"></script>
-    <script src="exp/main.js"></script> -->
+    <script src="exp/var.js"></script>
+    <script src="exp/timeline.js"></script>
+    <!-- <script src="exp/main.js"></script> -->
   </footer>
 </html>

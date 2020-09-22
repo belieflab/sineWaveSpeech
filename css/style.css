@@ -103,3 +103,14 @@ body {
   margin: 30px auto;
   width: 300px;
 }
+
+
+#submitButton {
+  background-color: #007bff; /* omnibus blue */
+  border: black solid 3px;
+  color: white;
+  font-size: 30px;
+  height: 50px;
+  margin: 30px auto;
+  width: 300px;
+}
