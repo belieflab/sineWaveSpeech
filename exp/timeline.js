@@ -66,13 +66,13 @@ let block1Stim = {
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
     // data: jsPsych.timelineVariable('data'),
-    on_finish: function (data) {
-        experimentIterator++; 
-        },
+    // on_finish: function (data) {
+    //     experimentIterator++;
+    //     },
     trial_ends_after_audio: true
 };
 
-let listeningStim = { 
+let listeningStim = {
     type: 'audio-keyboard-response',
     prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
     stimulus: jsPsych.timelineVariable('stimulus'),
@@ -88,7 +88,7 @@ let listeningStim = {
         data.sex = sexAtBirth;
         data.response = '';
         data.index = experimentIterator;
-        experimentIterator++; 
+        experimentIterator++;
         },
     trial_ends_after_audio: true
 };
@@ -100,9 +100,9 @@ let block2Stim = {
     choices: jsPsych.NO_KEYS,
     response_ends_trial: false,
     // data: jsPsych.timelineVariable('data'),
-    on_finish: function (data) {
-        experimentIterator++; 
-        },
+    // on_finish: function (data) {
+    //     experimentIterator++;
+    //     },
     trial_ends_after_audio: true
 };
 
@@ -122,11 +122,12 @@ let response = {
         data.interview_age = ageAtAssessment;
         data.sex = sexAtBirth;
         data.index = experimentIterator;
+        experimentIterator++;
         data.response = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press);
     },
 };
 
-let pause = { 
+let pause = {
     type: 'html-keyboard-response',
     stimulus: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
     choices: jsPsych.NO_KEYS,
