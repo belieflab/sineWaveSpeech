@@ -85,7 +85,7 @@ let listeningStim = {
         data.interview_date = today;
         data.interview_age = ageAtAssessment;
         data.sex = sexAtBirth;
-        data.response = '';
+        data.response_speech = '';
         data.trial = experimentIterator;
         experimentIterator++;
         },
@@ -121,7 +121,7 @@ let response = {
         data.sex = sexAtBirth;
         data.trial = experimentIterator;
         experimentIterator++;
-        data.response = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press);
+        data.response_speech = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press);
     },
 };
 
