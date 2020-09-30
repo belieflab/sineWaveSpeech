@@ -1,2 +1,2 @@
 sinewave-speech,,,,,,,,,
-subjectkey,src_subject_id,interview_date,interview_age,sex,stim,index,test_part,rt,response
+subjectkey,src_subject_id,interview_date,interview_age,sex,stimulus,trial,test_part,rt,response
