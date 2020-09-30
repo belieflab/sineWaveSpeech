@@ -21,17 +21,17 @@ let unaltered_90 = [];
 
 let intel_stim=[];
     for (let i = 0; i < intel.length ; i++){
-        intel_stim.push({stimulus: intel_45[i], data: {test_part: 'intel', filename: intel[i]+".wav"}});
+        intel_stim.push({stimulus: intel_45[i], data: {test_part: 'intel', stimulus: intel[i]+".wav"}});
     }
 
 let unintel_stim=[];
     for (let i = 0; i < unintel.length ; i++){
-        unintel_stim.push({stimulus: unintel_45[i], data: {test_part: 'unintel', filename: unintel[i]+".wav"}});
+        unintel_stim.push({stimulus: unintel_45[i], data: {test_part: 'unintel', stimulus: unintel[i]+".wav"}});
     }
 
 let unaltered_stim=[];
     for (let i = 0; i < unaltered.length ; i++){
-        unaltered_stim.push({stimulus: unaltered_90[i], data: {test_part: 'unaltered', filename: unaltered[i]+".wav"}});
+        unaltered_stim.push({stimulus: unaltered_90[i], data: {test_part: 'unaltered', stimulus: unaltered[i]+".wav"}});
     }
 
 let full_stim = intel_stim.concat(unintel_stim);
