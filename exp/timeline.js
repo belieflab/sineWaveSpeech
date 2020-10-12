@@ -153,7 +153,7 @@ let save_data = {
     choices: jsPsych.NO_KEYS,
     trial_duration: 5000,
     on_finish: function(){
-      saveData("delay-discounting_" + workerId, jsPsych.data.get().csv());
+      saveData("sine-wave-speech_" + workerId, jsPsych.data.get().csv());
     }
   };
   
