@@ -27,10 +27,6 @@ let procedureTestBlock2 = { //This loops over the object
     //  timeline_variables: full_stim_shuffle.slice(1,2),
 }
 
-let debrief = { //This loops over the object
-    timeline: [end], //if you put fixation in front and the feedback after, it will display those in that order
-}
-
 timeline.push(welcome)
 timeline.push(procedureInstructions)
 timeline.push(procedureTestBlock1) //Object oriented.
