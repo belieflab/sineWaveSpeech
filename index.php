@@ -19,7 +19,7 @@ file_put_contents($name, $data);
       <link  href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link> <!--link is for any other text file; href is for local directory, either a url or path -->
       <link  href="css/style.css" rel="stylesheet" type="text/css" > <!--the interpreter will take care of ordering, rel, type, href do not have to be in a specific order -->
   </head>
-  <body style="background-color:light-grey;">  <!--any time you see style = all properties that follow are inline css -->
+  <body onbeforeunload="return areYouSure()" style="background-color:light-grey;">  <!--any time you see style = all properties that follow are inline css -->
     <?php include_once 'include/intake.php';?>
   </body>
   <footer>
