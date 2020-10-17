@@ -76,26 +76,8 @@
 </div>
 <script type="text/javascript" src="//code.jquery.com/jquery-git.js"></script>
 <script>$("button.loadMain").click(function(){
-      // $.getScript("exp/timeline.js");
     $.getScript("exp/main.js");
-    // $.getScript("exp/timeline.js");
-    // $.load("include/consent.php");
+    $("body").addClass("hideCursor");
   }); </script>
 <script>
 </script>
-<!-- <label class="container">One
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Two
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Three
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Four
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label> -->
