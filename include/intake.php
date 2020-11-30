@@ -5,7 +5,7 @@
   <div id="intake">
     <p><b>Select your Research Site:</b></p>
     <select name="facility" id="siteid">
-        <option value="">---</option>
+        <option value="none">---</option>
         <option value="Maryland">Maryland</option>
         <option value="Northwestern">Northwestern</option>
         <option value="Temple">Temple</option>
@@ -24,34 +24,58 @@
     </form> -->
     <form action="<?php echo SIGNUP_VIEW ?>/post/intakeadd.php" method="post">
     <p><b>Subject ID Number:</b></p>
-    <input required id="subjectid" type="number" name="consent_id">
-</form>
+    <input required id="subjectid" type="text" name="consent_id" plattern="\d*" minlength="4" maxlength="4">
+    
+    <!-- GUID -->
+    <input required type="hidden" id="guid" name="guid" value="<?php echo $guid ?>">
+
+    </form>
     <!-- <button onclick="submitIntake()">submit subjectid</button> -->
-    <!-- <p><b>Participant DOB</b></p>
-    <p><b>Enter as MM/DD/YYYY</b></p>
-    <p style="color:red">*must provide value</p>
-    <input type="date">
-    <form> -->
-    <!-- <input type="checkbox"><p>Left</p> -->
-  <form action="<?php echo SIGNUP_VIEW ?>/post/intakeadd.php" method="post">
+    <p><b>Date of Birth:</b></p>
+    <!-- <p><b>Enter as MM/DD/YYYY</b></p> -->
+    <!-- <p style="color:red">*must provide value</p> -->
+    <input required id="dob" type="date">
+    <!-- <form>
     <p><b>Age:</b></p>
-    <input required id="age" type="number" name="currentage">
-</form>
+    <input required id="age" type="text" name="currentage" plattern="\d*" minlength="1" maxlength="3">
+    </form> -->
+    <form>
+    <p><strong>Please select your sex assigned at birth:</strong></p>
+    <label for="male">Male</label>
+    <input type="radio" id="male" name="sex" value="male" onclick="sexFinder(this.value)">
+    <label for="female">Female</label>
+    <input type="radio" id="female" name="sex" value="female" onclick="sexFinder(this.value)">
+    </form>
+    <form>
+
 <form>
-  <p><strong>Please select your sex assigned at birth:</strong></p>
-  <label for="male">Male</label>
-  <input type="radio" id="male" name="sex" value="male" onclick="sexFinder(this.value)">
-  <label for="female">Female</label>
-  <input type="radio" id="female" name="sex" value="female" onclick="sexFinder(this.value)">
-  </form>
-<form>
-    <p><b>Before proceeding to the task, please confirm that the following are true:</b></p>
-    <label class="container">Screen brightness is up to 100% &nbsp&nbsp&nbsp&nbsp   
-    <input type="checkbox">
+    <!-- <label for="handedness"><b>Are you right or left handed?</b></label> -->
+    <p><b>Which is your dominant hand?</b></p>
+        <label for="right">Right</label>
+        <input type="radio" name="handedness" id="rightHanded" value="rightHanded">
+
+        <label for="left">Left</label>
+        <input type="radio" name="handedness" id="leftHanded" value="leftHanded">
+
+        <!-- <span class="checkmark"></span> -->
+
+    <p><b>Before proceeding to the task, please confirm the following are true:</b></p>
+    <label class="container">Screen brightness is up to 100% &nbsp&nbsp&nbsp&nbsp  
+    <input type="hidden" name="brightness" id="brightness" value="0" />
+    <input type="checkbox" name="brightness" id="brightness" value="1"/>
+    </label>
     <br>
+    <label class="container">Headphones plugged in? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp      
+    <input type="hidden" name="headphones" id="headphones" value="0" />
+    <input type="checkbox" name="headphones" id="headphones" value="1"/>
+    </label>
+    <br>
+    <label class="container">Headphone volume is set to 50% &nbsp&nbsp&nbsp  
+    <input type="hidden" name="volume" id="volume" value="0" />
+    <input type="checkbox" name="volume" id="volume" value="1"/>
   </label>
-  
-  <label class="container">Headphones plugged in? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp               
+  </form>
+  <!-- <label class="container">Headphones plugged in? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp               
     <input type="checkbox"> 
     <br>
   </label>
@@ -61,8 +85,8 @@
     <br>
   </label>
 </form>
-<br>
-<button id="submitButton" class="loadMain" onclick="submitIntake(), ageFinder()" type="button">submit</button>
+<br> -->
+<button id="submitButton" class="loadMain" onclick="validateSite(), submitIntake(), guidBuilder(), ageFinder(), validateSex(), validateHandedness(), validateBrightness()" type="button">submit</button>
 </div>
 <div id="validation" style="display: none">
     <br>
@@ -70,14 +94,17 @@
 </form>
 </div>
 <div>
-<button id="nextButton" style="display: none" onclick="startExperiment()">START</button>
+<button id="nextButton" class="noCursor" style="display: none" onclick="startExperiment()">START</button>
 <!-- <p id="nextButton" style="display: none" >please make sure you are in a quiet place. When you are ready to begin, click 'START'</p> -->
 <br>
 </div>
 <script type="text/javascript" src="//code.jquery.com/jquery-git.js"></script>
 <script>$("button.loadMain").click(function(){
-    $.getScript("exp/main.js");
-    $("body").addClass("hideCursor");
+      $.getScript("exp/timeline.js");
+    // $.getScript("exp/main.js");
   }); </script>
 <script>
+$("button.noCursor").click(function(){
+$("body").addClass("hideCursor");
+}); 
 </script>

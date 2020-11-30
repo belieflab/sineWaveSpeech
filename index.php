@@ -1,10 +1,22 @@
 <?php
-$post_data = json_decode(file_get_contents('php://input'), true); //json is a type of javascript variable that functions as a structure. json_decode makes it php. file_get_contents gets the raw input for php
+$post_data = json_decode(file_get_contents('php://input'), true); 
 // the directory "data" must be writable by the server
 $name = "data/".$post_data['filename'].".csv"; 
 $data = $post_data['filedata'];
 // write the file to disk
 file_put_contents($name, $data);
+
+include_once ("db/config.php");
+
+$studyId = $_GET["studyId"];
+$candidateId = $_GET["candidateId"];
+$query = "SELECT GUID from candidate where sub_id = $candidateId";
+$prepare = $db_connection->prepare($query);
+$prepare->execute();
+$result = $prepare->get_result();
+$row = $result->fetch_assoc();
+$guid = $row["GUID"];
+$prepare->close();
 ?>
 
 
@@ -27,7 +39,9 @@ file_put_contents($name, $data);
     <script src="exp/conf.js"></script>
     <script src="exp/fn.js"></script>
     <script src="exp/var.js"></script>
-    <script src="exp/timeline.js"></script>
-    <!-- <script src="exp/main.js"></script> -->
+    <!-- <script src="exp/timeline.js"></script> -->
+    <script type="text/javascript">
+    let feedbackLink = "https://omnibus.sh/eCRFs/feedback/tasks/sws.php?studyId=<?php echo $studyId?>";
+    </script>
   </footer>
 </html>

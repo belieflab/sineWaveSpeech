@@ -80,11 +80,13 @@ let listeningStim = {
     response_ends_trial: false,
     data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
-        data.subjectKey = 'GUID';
+        data.subjectKey = GUID;
         data.src_subject_id = workerId;
+        data.site = siteNumber;
         data.interview_date = today;
         data.interview_age = ageAtAssessment;
         data.sex = sexAtBirth;
+        data.handedness = handedness;
         data.response_speech = '';
         data.trial = experimentIterator;
         experimentIterator++;
@@ -108,17 +110,19 @@ let block2Stim = {
 let response = { 
     type: 'html-keyboard-response',
     // stimulus: '<p style="color:white;">Could you hear a complete sentence in the audio?</p>' +
-    stimulus: '<h1 style="color:white;">Could you hear speech in the audio?</h1>' +
+    stimulus: '<h1 style="color:white;">Could you hear a complete setence in the audio?</h1>' +
     '<h3 style="color:white;">Press "1" for Yes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press "0" for No</h3>',
     choices: ['1', '0'],
     response_ends_trial: true,
     data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
-        data.subjectKey = 'GUID';
+        data.subjectKey = GUID;
         data.src_subject_id = workerId;
+        data.site = siteNumber;
         data.interview_date = today;
         data.interview_age = ageAtAssessment;
         data.sex = sexAtBirth;
+        data.handedness = handedness;
         data.trial = experimentIterator;
         experimentIterator++;
         data.response_speech = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press);
@@ -132,7 +136,6 @@ let pause = {
     response_ends_trial: false,
     trial_duration: 500,
 };
-
 
 let save_data = {
     type: "html-keyboard-response",
@@ -153,7 +156,7 @@ let save_data = {
     choices: jsPsych.NO_KEYS,
     trial_duration: 5000,
     on_finish: function(){
-      saveData("sine-wave-speech_" + workerId, jsPsych.data.get().csv());
+      saveData("sws_" + workerId, jsPsych.data.get().csv());
       document.getElementById("unload").onbeforeunload='';
       $(document).ready(function(){
       $("body").addClass("showCursor"); // returns cursor functionality
@@ -166,10 +169,48 @@ let save_data = {
     stimulus:   "<p>Thank you!</p>"+
     "<p>You have successfully completed the experiment and your data has been saved.</p>"+
     "<p>To leave feedback on this task, please click the following link:</p>"+
-    "<p><a href='https://omnibus.sh/eCRFs/feedback/sws.php'>Leave Task Feedback!</a></p>"+
-        // "<p>Please wait for the experimenter to continue.</p>"+
-    "<p>You may now close the expriment window at anytime.</p>",
+    "<p style='color:white;'><a href="+feedbackLink+">Leave Task Feedback!</a></p>"+
+    // "<p>Please wait for the experimenter to continue.</p>"+
+    "<p><i>You may now close the expriment window at anytime.</i></p>",
     choices: jsPsych.NO_KEYS,
-    trial_duration: 60000,
+    // trial_duration: 60000,
   };
   
+  // procedure
+
+let procedureInstructions = { //This loops over the object
+    timeline: [instructions_1, instructions_2, instructions_3, instructions_4], //if you put fixation in front and the feedback after, it will display those in that order
+    randomize_order: false,// This is the outer procedure, looping over the stimuli
+}
+
+let procedureTestBlock1 = { //This loops over the object
+    timeline: [fixation, block1Stim, response], //if you put fixation in front and the feedback after, it will display those in that order
+    randomize_order: false,// This is the outer procedure, looping over the stimuli
+   timeline_variables: full_stim_shuffle.slice(0,45),
+    //  timeline_variables: full_stim_shuffle.slice(0,1),
+}
+
+let procedureListeningBlock = { //This loops over the object
+    timeline: [listeningStim, pause], //if you put fixation in front and the feedback after, it will display those in that order
+    randomize_order: false,// This is the outer procedure, looping over the stimuli
+    timeline_variables: unaltered_stim_shuffle,
+    //  timeline_variables: unaltered_stim_shuffle.slice(0,1),
+
+}
+
+let procedureTestBlock2 = { //This loops over the object
+    timeline: [fixation, block1Stim, response], //if you put fixation in front and the feedback after, it will display those in that order
+    randomize_order: false,// This is the outer procedure, looping over the stimuli
+    timeline_variables: full_stim_shuffle.slice(45,90),
+    //  timeline_variables: full_stim_shuffle.slice(1,2),
+}
+
+timeline.push(welcome)
+timeline.push(procedureInstructions)
+timeline.push(procedureTestBlock1) //Object oriented.
+timeline.push(beginListeningBlock)
+timeline.push(procedureListeningBlock) //Object oriented.
+timeline.push(beginSecondBlock)
+timeline.push(procedureTestBlock2) //Object oriented.
+timeline.push(save_data)
+timeline.push(end)
