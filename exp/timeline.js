@@ -110,7 +110,7 @@ let block2Stim = {
 let response = { 
     type: 'html-keyboard-response',
     // stimulus: '<p style="color:white;">Could you hear a complete sentence in the audio?</p>' +
-    stimulus: '<h1 style="color:white;">Could you hear a complete setence in the audio?</h1>' +
+    stimulus: '<h1 style="color:white;">Could you hear a complete sentence in the audio?</h1>' +
     '<h3 style="color:white;">Press "1" for Yes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press "0" for No</h3>',
     choices: ['1', '0'],
     response_ends_trial: true,
