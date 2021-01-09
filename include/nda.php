@@ -41,15 +41,17 @@
   </label>
 </form>
 <br> -->
-<button id="submitButton" class="loadMain" onclick="submitIntake(), validateHandedness(), validateBrightness(), validateHeadphones(), validateVolume()" type="button">submit</button>
+<button id="submitButton" class="btn btn-primary btn-lg loadMain" onclick="validateHandedness(), validateBrightness(), validateHeadphones(), validateVolume(), submitIntake()" type="button">SUBMIT</button>
 </div>
 <div id="validation" style="display: none">
     <br>
     <form>
 </form>
 </div>
-<div>
-<button id="nextButton" class="noCursor" style="display: none" onclick="startExperiment()">START</button>
+
+<div id="load" style="display: none">
+<h3>All validation rules were passed successfully. Click to load the experiment.</h3>
+<button id="nextButton" class="noCursor" onclick="startExperiment()">LOAD</button>
 <!-- <p id="nextButton" style="display: none" >please make sure you are in a quiet place. When you are ready to begin, click 'START'</p> -->
 <br>
 </div>
