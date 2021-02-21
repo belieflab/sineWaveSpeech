@@ -86,6 +86,7 @@ let listeningStim = {
         data.interview_date = today;
         data.interview_age = ageAtAssessment;
         data.sex = sexAtBirth;
+        data.phenotype = groupStatus;
         data.handedness = handedness;
         data.response_speech = '';
         data.index = experimentIterator;
@@ -122,6 +123,7 @@ let response = {
         data.interview_date = today;
         data.interview_age = ageAtAssessment;
         data.sex = sexAtBirth;
+        data.phenotype = groupStatus;
         data.handedness = handedness;
         data.index = experimentIterator;
         experimentIterator++;

@@ -33,14 +33,33 @@
     <script src="exp/conf.js"></script>
     <script src="exp/fn.js"></script>
     <script src="exp/var.js"></script>
-    <!-- <script src="exp/timeline.js"></script> -->
     <script type="text/javascript">
-    let feedbackLink = "https://belieflab.yale.edu/omnibus/eCRFs/feedback/tasks/sws.php?candidateId=<?php echo $candidateId?>&studyId=<?php echo $studyId?>";
-    let GUID = "<?php echo $subjectKey?>";
-    let subjectID = "<?php echo $consortId?>";
-    let sexAtBirth = "<?php echo $sexAtBirth?>";
-    let siteNumber = "<?php echo $institutionAlias?>";
-    let ageAtAssessment = "<?php echo $ageInMonths?>";
+      // declare NDA required variables
+      let GUID;
+      let subjectID;
+      let sexAtBirth;
+      let siteNumber;
+      let ageAtAssessment;
+      let groupStatus;
+      let feedbackLink;
+
+      if (db_connection === false) {
+        GUID = "";
+        subjectID = "";
+        sexAtBirth = "";
+        siteNumber = "";
+        ageAtAssessment = "";
+        feedbackLink = "";
+        groupStatus = "";
+      } else if (db_connection === true) {
+        GUID = "<?php echo $subjectKey?>";
+        subjectID = "<?php echo $consortId?>";
+        sexAtBirth = "<?php echo $sexAtBirth?>";
+        siteNumber = "<?php echo $institutionAlias?>";
+        ageAtAssessment = "<?php echo $ageInMonths?>";
+        groupStatus = "<?php echo $groupStatus?>";
+        feedbackLink = "https://belieflab.yale.edu/omnibus/eCRFs/feedback/tasks/kamin.php?candidateId=<?php echo $candidateId?>&studyId=<?php echo $studyId?>";
+      }
     </script>
   </footer>
 </html>
