@@ -80,7 +80,7 @@ let listeningStim = {
     response_ends_trial: false,
     data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
-        data.subjectKey = GUID;
+        data.subjectkey = GUID;
         data.src_subject_id = workerId;
         data.site = siteNumber;
         data.interview_date = today;
@@ -117,7 +117,7 @@ let response = {
     response_ends_trial: true,
     data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
-        data.subjectKey = GUID;
+        data.subjectkey = GUID;
         data.src_subject_id = workerId;
         data.site = siteNumber;
         data.interview_date = today;
