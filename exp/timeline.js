@@ -162,7 +162,8 @@ let save_data = {
       document.getElementById("unload").onbeforeunload='';
       $(document).ready(function(){
       $("body").addClass("showCursor"); // returns cursor functionality
-  });
+      closeFullscreen(); // kill fullscreen 
+    });
     }
   };
 
