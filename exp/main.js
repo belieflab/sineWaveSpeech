@@ -7,27 +7,24 @@ const procedureInstructions = {
 };
 
 const procedureTestBlock1 = {
-    //This loops over the object
-    timeline: [fixation, block1Stim, response], //if you put fixation in front and the feedback after, it will display those in that order
-    randomize_order: false, // This is the outer procedure, looping over the stimuli
+    timeline: [fixation, stim, response],
+    randomize_order: true,
     //timeline_variables: full_stim_shuffle.slice(0, 45), // incorrect assignment (only half played in capr)
-    timeline_variables: full_stim_shuffle,
+    timeline_variables: intel_and_unintel_stim,
 };
 
 const procedureListeningBlock = {
     //This loops over the object
-    timeline: [listeningStim, pause], //if you put fixation in front and the feedback after, it will display those in that order
-    randomize_order: false, // This is the outer procedure, looping over the stimuli
-    timeline_variables: unaltered_stim_shuffle,
-    //  timeline_variables: unaltered_stim_shuffle.slice(0,1),
+    timeline: [listeningStim, pause],
+    randomize_order: true,
+    timeline_variables: unaltered_stim,
 };
 
 const procedureTestBlock2 = {
-    //This loops over the object
-    timeline: [fixation, block1Stim, response], //if you put fixation in front and the feedback after, it will display those in that order
-    randomize_order: false, // This is the outer procedure, looping over the stimuli
+    timeline: [fixation, stim, response],
+    randomize_order: true,
     // timeline_variables: full_stim_shuffle.slice(45, 90), // incorrect assignment (only half played in capr)
-    timeline_variables: shuffleArray(full_stim_shuffle),
+    timeline_variables: intel_and_unintel_stim,
 };
 
 timeline.push(preload);

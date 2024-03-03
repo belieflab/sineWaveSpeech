@@ -79,7 +79,7 @@ const fixation = {
     trial_duration: 1000,
 };
 
-const block1Stim = {
+const stim = {
     type: jsPsychAudioKeyboardResponse,
     prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
     stimulus: jsPsych.timelineVariable("stimulus"),
@@ -101,15 +101,6 @@ const listeningStim = {
         data.index = trialIterator;
         trialIterator++;
     },
-    trial_ends_after_audio: true,
-};
-
-const block2Stim = {
-    type: jsPsychAudioKeyboardResponse,
-    prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
-    stimulus: jsPsych.timelineVariable("stimulus"),
-    choices: "NO_KEYS",
-    response_ends_trial: false,
     trial_ends_after_audio: true,
 };
 

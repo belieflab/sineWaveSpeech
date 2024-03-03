@@ -55,8 +55,6 @@ const unintel_stim = createStimuli(unintelligible, "unintel");
 const unaltered_stim = createStimuli(unaltered, "unaltered");
 
 // Combined and shuffled arrays of stimuli
-const full_stim = intel_stim.concat(unintel_stim); // Combined array of intel and unintel stimuli
-const full_stim_shuffle = shuffleArray(full_stim); // Shuffled array with no repeats
-const unaltered_stim_shuffle = shuffleArray(unaltered_stim); // Shuffled array with no repeats
+const intel_and_unintel_stim = intel_stim.concat(unintel_stim); // Combined array of intel and unintel stimuli
 
 </script>
