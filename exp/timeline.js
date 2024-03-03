@@ -1,183 +1,200 @@
-/* create timeline */
-let timeline = [];
+"use strict";
+
+const jsPsych = initJsPsych({
+    show_progress_bar: true,
+});
+
+const timeline = [];
+
+const preload = {
+    type: jsPsychPreload,
+    images: [],
+    show_detailed_errors: true,
+};
 
 /* define welcome message trial */
-let welcome = {
-    type: "html-keyboard-response",
-    stimulus: '<h1 style="color:white;">Welcome to the experiment!</h1>' + 
-    '<p style="color:white;">Press any key to continue.</p>', //by default, jsPysch is white background and black text
+const welcome = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus:
+        '<h1 style="color:white;">Welcome to the experiment!</h1>' +
+        '<p style="color:white;">Press any key to continue.</p>', //by default, jsPysch is white background and black text
 };
 
 /* define instructions trial */
-let instructions_1 = {
-    type: "html-keyboard-response",
-    stimulus: '<h2 style="color:white;">In this task you will listen to a series of audio clips.</h2>' +
-    '<h2 style="color:white;">The task is split into two test blocks, with a listening block in-between.</h2>'+
-    '<p style="color:white;">Press any key to continue.</p>',
+const instructions_1 = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus:
+        '<h2 style="color:white;">In this task you will listen to a series of audio clips.</h2>' +
+        '<h2 style="color:white;">The task is split into two test blocks, with a listening block in-between.</h2>' +
+        '<p style="color:white;">Press any key to continue.</p>',
 };
 
-let instructions_2 = {
-    type: "html-keyboard-response",
-    stimulus: '<h2 style="color:white;">In the test blocks you will listen to a series of audio clips, and will have to indicate whether you heard speech in each clip.</h2>'+
-    '<p style="color:white;">Press any key to continue.</p>',
+const instructions_2 = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus:
+        '<h2 style="color:white;">In the test blocks you will listen to a series of audio clips, and will have to indicate whether you heard speech in each clip.</h2>' +
+        '<p style="color:white;">Press any key to continue.</p>',
 };
 
-let instructions_3 = {
-    type: "html-keyboard-response",
-    stimulus: '<h2 style="color:white;">In the listening block you just have to listen to several audio recordings. No response is required.</h2>'+
-    '<p style="color:white;">Press any key to continue.</p>',
+const instructions_3 = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus:
+        '<h2 style="color:white;">In the listening block you just have to listen to several audio recordings. No response is required.</h2>' +
+        '<p style="color:white;">Press any key to continue.</p>',
 };
 
-let instructions_4 = {
-    type: "html-keyboard-response",
-    stimulus: '<h2 style="color:white;">We will now begin the first test block.</h2> ' +
+const instructions_4 = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus:
+        '<h2 style="color:white;">We will now begin the first test block.</h2> ' +
         '<p style="color:white;">Press any key to begin.</p>',
 };
 
-let beginListeningBlock = { 
-    type: 'html-keyboard-response',
-    stimulus: '<h2 style="color:white;">You will now hear some short sentences.</h2>' +
-    '<p style="color:white;">You do not need to respond, just listen.</p>',
-    choices: jsPsych.NO_KEYS,
+const beginListeningBlock = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus:
+        '<h2 style="color:white;">You will now hear some short sentences.</h2>' +
+        '<p style="color:white;">You do not need to respond, just listen.</p>',
+    choices: "NO_KEYS",
     response_ends_trial: false,
     trial_duration: 10000,
 };
 
-let beginSecondBlock = { 
-    type: 'html-keyboard-response',
-    stimulus: '<h2 style="color:white;">We will now begin the second test block.</h2',
-    choices: jsPsych.NO_KEYS,
+const beginSecondBlock = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus:
+        '<h2 style="color:white;">We will now begin the second test block.</h2',
+    choices: "NO_KEYS",
     response_ends_trial: false,
     trial_duration: 10000,
 };
 
-let fixation = { 
-    type: 'html-keyboard-response',
-    stimulus: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
-    choices: jsPsych.NO_KEYS,
+const fixation = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus:
+        '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
+    choices: "NO_KEYS",
     response_ends_trial: false,
     trial_duration: 1000,
 };
 
-let block1Stim = { 
-    type: 'audio-keyboard-response',
+const block1Stim = {
+    type: jsPsychAudioKeyboardResponse,
     prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
-    stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: jsPsych.NO_KEYS,
+    stimulus: jsPsych.timelineVariable("stimulus"),
+    choices: "NO_KEYS",
     response_ends_trial: false,
-    // data: jsPsych.timelineVariable('data'),
-    // on_finish: function (data) {
-    //     experimentIterator++;
-    //     },
-    trial_ends_after_audio: true
+    trial_ends_after_audio: true,
 };
 
-let listeningStim = {
-    type: 'audio-keyboard-response',
+const listeningStim = {
+    type: jsPsychAudioKeyboardResponse,
     prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
-    stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: jsPsych.NO_KEYS,
+    stimulus: jsPsych.timelineVariable("stimulus"),
+    choices: "NO_KEYS",
     response_ends_trial: false,
-    data: jsPsych.timelineVariable('data'),
+    data: jsPsych.timelineVariable("data"),
     on_finish: function (data) {
-        data.subjectkey = GUID;
-        data.src_subject_id = workerId;
-        data.site = siteNumber;
-        data.interview_date = today;
-        data.interview_age = ageAtAssessment;
-        data.sex = sexAtBirth;
-        data.phenotype = groupStatus;
-        data.handedness = handedness;
-        data.response_speech = '';
-        data.index = experimentIterator;
-        experimentIterator++;
-        },
-    trial_ends_after_audio: true
+        writeCandidateKeys(data);
+        data.response_speech = "";
+        data.index = trialIterator;
+        trialIterator++;
+    },
+    trial_ends_after_audio: true,
 };
 
-let block2Stim = { 
-    type: 'audio-keyboard-response',
+const block2Stim = {
+    type: jsPsychAudioKeyboardResponse,
     prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
-    stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: jsPsych.NO_KEYS,
+    stimulus: jsPsych.timelineVariable("stimulus"),
+    choices: "NO_KEYS",
     response_ends_trial: false,
-    // data: jsPsych.timelineVariable('data'),
-    // on_finish: function (data) {
-    //     experimentIterator++;
-    //     },
-    trial_ends_after_audio: true
+    trial_ends_after_audio: true,
 };
 
-let response = { 
-    type: 'html-keyboard-response',
+const response = {
+    type: jsPsychHtmlKeyboardResponse,
     // stimulus: '<p style="color:white;">Could you hear a complete sentence in the audio?</p>' +
-    stimulus: '<h1 style="color:white;">Could you hear a complete sentence in the audio?</h1>' +
-    '<h3 style="color:white;">Press "1" for Yes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press "0" for No</h3>',
-    choices: ['1', '0'],
+    stimulus:
+        '<h1 style="color:white;">Could you hear a complete sentence in the audio?</h1>' +
+        '<h3 style="color:white;">Press "1" for Yes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press "0" for No</h3>',
+    choices: ["1", "0"],
     response_ends_trial: true,
-    data: jsPsych.timelineVariable('data'),
+    data: jsPsych.timelineVariable("data"),
     on_finish: function (data) {
-        data.subjectkey = GUID;
-        data.src_subject_id = workerId;
-        data.site = siteNumber;
-        data.interview_date = today;
-        data.interview_age = ageAtAssessment;
-        data.sex = sexAtBirth;
-        data.phenotype = groupStatus;
-        data.handedness = handedness;
-        data.index = experimentIterator;
-        experimentIterator++;
-        data.response_speech = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press);
+        writeCandidateKeys(data);
+        data.index = trialIterator;
+        trialIterator++;
+        data.response_speech = jsPsych.data.get().last(1).values()[0].response;
     },
 };
 
-let pause = {
-    type: 'html-keyboard-response',
-    stimulus: '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
-    choices: jsPsych.NO_KEYS,
+const pause = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus:
+        '<p id="counter" style="text-align:center; color:white; font-size:30px">+</p>',
+    choices: "NO_KEYS",
     response_ends_trial: false,
     trial_duration: 500,
 };
 
-let save_data = {
-    type: "html-keyboard-response",
-    stimulus: "<p>Data saving...</p>"+
-    '<div class="sk-cube-grid">'+
-  '<div class="sk-cube sk-cube1"></div>'+
-  '<div class="sk-cube sk-cube2"></div>'+
-  '<div class="sk-cube sk-cube3"></div>'+
-  '<div class="sk-cube sk-cube4"></div>'+
-  '<div class="sk-cube sk-cube5"></div>'+
-  '<div class="sk-cube sk-cube6"></div>'+
-  '<div class="sk-cube sk-cube7"></div>'+
-  '<div class="sk-cube sk-cube8"></div>'+
-  '<div class="sk-cube sk-cube9"></div>'+
-  '</div>'+
-    "<p>Do not close this window until the text dissapears.</p>",
-  
-    choices: jsPsych.NO_KEYS,
+const dataSave = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: dataSaveAnimation(),
+    choices: "NO_KEYS",
     trial_duration: 5000,
-    on_finish: function(){
-      saveData("sws_" + workerId, jsPsych.data.get().csv());
-      document.getElementById("unload").onbeforeunload='';
-      $(document).ready(function(){
-      $("body").addClass("showCursor"); // returns cursor functionality
-      closeFullscreen(); // kill fullscreen 
-    });
-    }
-  };
+    on_finish: () => {
+        const updatedScore =
+            typeof score !== "undefined"
+                ? score
+                : jsPsych.data.get().select("score").values.slice(-1)[0]; // Replace 'score' with actual data key if necessary
 
-  let end = {
-    type: "html-keyboard-response",
-    stimulus:   "<p>Thank you!</p>"+
-    "<p>You have successfully completed the experiment and your data has been saved.</p>"+
-    "<p>To leave feedback on this task, please click the following link:</p>"+
-    "<p style='color:white;'><a href="+feedbackLink+">Leave Task Feedback!</a></p>"+
-    // "<p>Please wait for the experimenter to continue.</p>"+
-    "<p><i>You may now close the expriment window at anytime.</i></p>",
-    choices: jsPsych.NO_KEYS,
-    // trial_duration: 60000,
-  };
+        // Now, generate the thank you message with the updated score
+        const thankYou = instructions[3](updatedScore);
 
-// call main
+        saveDataPromise(
+            `${experimentAlias}_${subjectId}`,
+            jsPsych.data.get().csv()
+        )
+            .then((response) => {
+                console.log("Data saved successfully.", response);
+                // Update the stimulus content directly via DOM manipulation
+                document.querySelector("#jspsych-content").innerHTML = thankYou;
+            })
+            .catch((error) => {
+                console.log("Failed to save data.", error);
+                // Check if the error object has 'error' property and use it, otherwise convert object to string
+                let errorMessage = error.error || JSON.stringify(error);
+                switch (errorMessage) {
+                    case '{"success":false}':
+                        errorMessage =
+                            "The ./data directory does not exit on this server.";
+                        break;
+                    case "Not Found":
+                        errorMessage =
+                            "There was an error saving the file to disk.";
+                        break;
+                    default:
+                        errorMessage = "Unknown error.";
+                }
+                // Update the stimulus content directly via DOM manipulation
+                const dataFailure = `
+                <div class="error-page">
+                    <p>Oh no!</p>
+                    <p>An error has occured and your data has not been saved:</p>
+                    <p>${errorMessage}</p>
+                    <p>Please wait for the experimenter to continue.</p>
+                </div>`;
+                document.querySelector("#jspsych-content").innerHTML =
+                    dataFailure;
+            })
+            .finally(() => {
+                document.getElementById("unload").onbeforeunload = ""; // Removes popup
+                $("body").addClass("showCursor"); // Returns cursor functionality
+                closeFullscreen(); // Kill fullscreen
+            });
+    },
+};
+
+// Load and execute "exp/main.js" using jQuery's $.getScript method.
 $.getScript("exp/main.js");
