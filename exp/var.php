@@ -1,253 +1,62 @@
-<!-- Purpose of var.js: To include all global variables (e.g., trialIterator) -->
-<!-- And any php server side logic -->
+<!-- Purpose of var.js: To include all global variables and server-side logic -->
 
 <?php
-// include any php code here
+// Directory paths for different stimulus types
+$intelPath = './stim/intel_45/';
+$unintelPath = './stim/unintel_45/';
+$unalteredPath = './stim/unaltered_45/';
+
+// Function to scan directory and return array of file paths, excluding . and ..
+function getFilePaths($dirPath) {
+    $files = scandir($dirPath);
+    $fileArray = [];
+    foreach ($files as $file) {
+        if ($file !== '.' && $file !== '..') {
+            $fileArray[] = $dirPath . $file;
+        }
+    }
+    return $fileArray;
+}
+
+// Arrays of file paths for each stimulus type
+$intelArray = getFilePaths($intelPath);
+$unintelArray = getFilePaths($unintelPath);
+$unalteredArray = getFilePaths($unalteredPath);
+
+// JSON-encoded strings for use in JavaScript
+$intelArrayJSON = json_encode($intelArray);
+$unintelArrayJSON = json_encode($unintelArray);
+$unalteredArrayJSON = json_encode($unalteredArray);
 ?>
-
-
-<!-- define all javascript globals here -->
 
 <script>
 "use strict";
 
+// Global variables for tracking trial and score
 let trialIterator = 0;
-
 let score = 0;
 
-const intel = [
-    "102",
-    "103",
-    "106",
-    "109",
-    "110",
-    "112",
-    "114",
-    "115",
-    "201",
-    "202",
-    "203",
-    "205",
-    "206",
-    "209",
-    "214",
-    "215",
-    "304",
-    "306",
-    "307",
-    "308",
-    "309",
-    "311",
-    "312",
-    "315",
-    "316",
-    "401",
-    "406",
-    "407",
-    "409",
-    "411",
-    "412",
-    "413",
-    "416",
-    "501",
-    "505",
-    "511",
-    "512",
-    "513",
-    "514",
-    "603",
-    "607",
-    "608",
-    "609",
-    "612",
-    "613",
-];
-const unintel = [
-    "102",
-    "103",
-    "106",
-    "109",
-    "110",
-    "112",
-    "114",
-    "115",
-    "201",
-    "202",
-    "203",
-    "205",
-    "206",
-    "209",
-    "214",
-    "215",
-    "304",
-    "306",
-    "307",
-    "308",
-    "309",
-    "311",
-    "312",
-    "315",
-    "316",
-    "401",
-    "406",
-    "407",
-    "409",
-    "411",
-    "412",
-    "413",
-    "416",
-    "501",
-    "505",
-    "511",
-    "512",
-    "513",
-    "514",
-    "603",
-    "607",
-    "608",
-    "609",
-    "612",
-    "613",
-];
-const unaltered = [
-    "0102",
-    "0103",
-    "0106",
-    "0109",
-    "0110",
-    "0112",
-    "0114",
-    "0115",
-    "0201",
-    "0202",
-    "0203",
-    "0205",
-    "0206",
-    "0209",
-    "0214",
-    "0215",
-    "0304",
-    "0306",
-    "0307",
-    "0308",
-    "0309",
-    "0311",
-    "0312",
-    "0315",
-    "0316",
-    "0401",
-    "0406",
-    "0407",
-    "0409",
-    "0411",
-    "0412",
-    "0413",
-    "0416",
-    "0501",
-    "0505",
-    "0511",
-    "0512",
-    "0513",
-    "0514",
-    "0603",
-    "0607",
-    "0608",
-    "0609",
-    "0612",
-    "0613",
-    "1702",
-    "1704",
-    "1706",
-    "1707",
-    "1710",
-    "1711",
-    "1714",
-    "1715",
-    "1801",
-    "1803",
-    "1807",
-    "1808",
-    "1814",
-    "1815",
-    "1816",
-    "1902",
-    "1904",
-    "1905",
-    "1910",
-    "1912",
-    "1913",
-    "1914",
-    "1915",
-    "1916",
-    "2001",
-    "2002",
-    "2004",
-    "2008",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2016",
-    "2102",
-    "2103",
-    "2105",
-    "2106",
-    "2107",
-    "2108",
-    "2109",
-    "2111",
-    "2112",
-    "2114",
-    "2116",
-];
+// Arrays of stimuli, parsed from JSON provided by PHP
+const intelligible = <?php echo $intelArrayJSON; ?>;
+const unintelligible = <?php echo $unintelArrayJSON; ?>;
+const unaltered = <?php echo $unalteredArrayJSON; ?>;
 
-let intel_45 = [];
-for (let i = 0; i < intel.length; i++) {
-    intel_45.push("stim/intel_45/I_BKBQ0" + intel[i] + ".wav");
+// Function to create stimulus objects for an array of file paths
+function createStimuli(array, part) {
+    return array.map(stimulus => ({
+        stimulus,
+        data: { test_part: part, stim: stimulus },
+    }));
 }
 
-let unintel_45 = [];
-for (let i = 0; i < unintel.length; i++) {
-    unintel_45.push("stim/unintel_45/U_BKBQ0" + unintel[i] + ".WAV");
-}
+// Stimulus objects for each category
+const intel_stim = createStimuli(intelligible, "intel");
+const unintel_stim = createStimuli(unintelligible, "unintel");
+const unaltered_stim = createStimuli(unaltered, "unaltered");
 
-let unaltered_90 = [];
-for (let i = 0; i < unaltered.length; i++) {
-    unaltered_90.push("stim/unaltered_45/BKBQ" + unaltered[i] + ".WAV");
-}
-
-let intel_stim = [];
-for (let i = 0; i < intel.length; i++) {
-    intel_stim.push({
-        stimulus: intel_45[i],
-        data: { test_part: "intel", stim: intel[i] + ".wav" },
-    });
-}
-
-let unintel_stim = [];
-for (let i = 0; i < unintel.length; i++) {
-    unintel_stim.push({
-        stimulus: unintel_45[i],
-        data: { test_part: "unintel", stim: unintel[i] + ".wav" },
-    });
-}
-
-let unaltered_stim = [];
-for (let i = 0; i < unaltered.length; i++) {
-    unaltered_stim.push({
-        stimulus: unaltered_90[i],
-        data: { test_part: "unaltered", stim: unaltered[i] + ".wav" },
-    });
-}
-
-let full_stim = intel_stim.concat(unintel_stim);
-
-let full_stim_shuffle = shuffleArray(full_stim); //shuffled array no repeats
-
-// we should have shuffled each deck first, then combined them
-
-let unaltered_stim_shuffle = shuffleArray(unaltered_stim); //shuffled array no repeats
-
+// Combined and shuffled arrays of stimuli
+const full_stim = intel_stim.concat(unintel_stim); // Combined array of intel and unintel stimuli
+const full_stim_shuffle = shuffleArray(full_stim); // Shuffled array with no repeats
+const unaltered_stim_shuffle = shuffleArray(unaltered_stim); // Shuffled array with no repeats
 
 </script>
