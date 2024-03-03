@@ -31,18 +31,27 @@ switch (version) {
         <p>Welcome to the server-side experiment!</p>
         <p>In this experiment, you will be presented with the words red and green. Please press the key "y" if the word is congruent or "n" if the word is incongruent.</p>
         <p>Press Space to continue.</p>`;
-
         var english3 = (score) => {
-            return `
-        <div class="body-white-theme">
-            <p>Thank you!</p>
-            <p>You have successfully completed the experiment and your data has been saved.</p>
-            <p>Your final score is ${score}.</p>
-            <!-- <p>To leave feedback on this task, please click the following link:</p> -->
-            <!-- <p><a href="${feedbackLink}">Leave Task Feedback!</a></p> -->
-            <!-- <p>Please wait for the experimenter to continue.</p> -->
-            <p><i>You may now close the experiment window at any time.</i></p>
-        </div>`;
+            // Initialize the base HTML content.
+            let htmlContent = `
+                <div class="body-white-theme">
+                    <p>Thank you!</p>
+                    <p>You have successfully completed the experiment and your data has been saved.</p>`;
+
+            // Append the score to the HTML content if it is not null.
+            if (score !== null) {
+                htmlContent += `<p>Your final score is ${score}.</p>`;
+            }
+
+            // Append the closing HTML content.
+            htmlContent += `
+                    <!-- <p>To leave feedback on this task, please click the following link:</p> -->
+                    <!-- <p><a href="${feedbackLink}">Leave Task Feedback!</a></p> -->
+                    <!-- <p>Please wait for the experimenter to continue.</p> -->
+                    <p>You may now close the experiment window at any time.</p>
+                </div>`;
+
+            return htmlContent;
         };
 }
 

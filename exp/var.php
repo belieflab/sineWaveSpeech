@@ -34,7 +34,7 @@ $unalteredArrayJSON = json_encode($unalteredArray);
 
 // Global variables for tracking trial and score
 let trialIterator = 0;
-let score = 0;
+let score = null;
 
 // Arrays of stimuli, parsed from JSON provided by PHP
 const intelligible = <?php echo $intelArrayJSON; ?>;
