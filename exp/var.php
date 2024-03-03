@@ -2,9 +2,9 @@
 
 <?php
 // Directory paths for different stimulus types
-$intelPath = './stim/intel_45/';
-$unintelPath = './stim/unintel_45/';
-$unalteredPath = './stim/unaltered_45/';
+$intelPath = './stim/intel45/';
+$unintelPath = './stim/unintel45/';
+$unalteredPath = './stim/unaltered90/';
 
 // Function to scan directory and return array of file paths, excluding . and ..
 function getFilePaths($dirPath) {
