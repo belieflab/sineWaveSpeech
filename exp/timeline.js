@@ -9,6 +9,7 @@ const timeline = [];
 const preload = {
     type: jsPsychPreload,
     images: [],
+    audio: [intelligible, unintelligible, unaltered],
     show_detailed_errors: true,
 };
 

@@ -10,8 +10,8 @@ const procedureTestBlock1 = {
     //This loops over the object
     timeline: [fixation, block1Stim, response], //if you put fixation in front and the feedback after, it will display those in that order
     randomize_order: false, // This is the outer procedure, looping over the stimuli
-    timeline_variables: full_stim_shuffle.slice(0, 45),
-    //  timeline_variables: full_stim_shuffle.slice(0,1),
+    //timeline_variables: full_stim_shuffle.slice(0, 45), // incorrect assignment (only half played in capr)
+    timeline_variables: full_stim_shuffle,
 };
 
 const procedureListeningBlock = {
@@ -26,10 +26,11 @@ const procedureTestBlock2 = {
     //This loops over the object
     timeline: [fixation, block1Stim, response], //if you put fixation in front and the feedback after, it will display those in that order
     randomize_order: false, // This is the outer procedure, looping over the stimuli
-    timeline_variables: full_stim_shuffle.slice(45, 90),
-    //  timeline_variables: full_stim_shuffle.slice(1,2),
+    // timeline_variables: full_stim_shuffle.slice(45, 90), // incorrect assignment (only half played in capr)
+    timeline_variables: shuffleArray(full_stim_shuffle),
 };
 
+timeline.push(preload);
 timeline.push(welcome);
 timeline.push(procedureInstructions);
 timeline.push(procedureTestBlock1); //Object oriented.
