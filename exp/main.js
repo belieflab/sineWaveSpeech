@@ -8,23 +8,20 @@ const procedureInstructions = {
 
 const procedureTestBlock1 = {
     timeline: [fixation, stim, response],
-    randomize_order: true,
     //timeline_variables: full_stim_shuffle.slice(0, 45), // incorrect assignment (only half played in capr)
-    timeline_variables: intel_and_unintel_stim,
+    timeline_variables: shuffleTimelineVariables(intel_and_unintel_stim),
 };
 
 const procedureListeningBlock = {
     //This loops over the object
     timeline: [listeningStim, pause],
-    randomize_order: true,
-    timeline_variables: unaltered_stim,
+    timeline_variables: shuffleTimelineVariables(unaltered_stim), //This is the outer procedure, looping over the stimuli
 };
 
 const procedureTestBlock2 = {
     timeline: [fixation, stim, response],
-    randomize_order: true,
     // timeline_variables: full_stim_shuffle.slice(45, 90), // incorrect assignment (only half played in capr)
-    timeline_variables: intel_and_unintel_stim,
+    timeline_variables: shuffleTimelineVariables(intel_and_unintel_stim),
 };
 
 timeline.push(preload);

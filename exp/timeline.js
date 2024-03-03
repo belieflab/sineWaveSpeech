@@ -16,6 +16,7 @@ const preload = {
 /* define welcome message trial */
 const welcome = {
     type: jsPsychHtmlKeyboardResponse,
+    on_load: () => toggleDebugMode(),
     stimulus:
         '<h1 style="color:white;">Welcome to the experiment!</h1>' +
         '<p style="color:white;">Press any key to continue.</p>', //by default, jsPysch is white background and black text
