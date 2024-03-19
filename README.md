@@ -1,1 +1,9 @@
-# sineWaveSpeech
+# Sine Wave Speech (SWS)
+
+## Task Description
+
+
+
+## Task Instructions
+For this task participants will hear audio clips and are asked to decide if they heard a complete sentence in the audio. They are instructed to press ‘1’ if they hear a complete sentence and ‘0’ if they did not. Following that portion, they are instructed to listen to some sentences and not respond. Then they will complete the first part of the task again. 
+Total run time: 10 minutes
