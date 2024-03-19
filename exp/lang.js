@@ -15,23 +15,47 @@ let instructions = [];
  */
 switch (version) {
     default:
-        var english0 = `<p>Hello!</p>
-        <p>Please edit exp/conf.php to configure the experiment.</p>
-        <p>You may set the experiment name: ${experimentName}</p>
-        <p>Experiment alias: ${experimentAlias} </p>
-        <p>And the language: ${language}</p>
-        <p>You may also set other variables as you choose.</p>
-        <p>Press Space to continue.</p>`;
-
+        var english0 = `
+        <p>Welcome to the experiment!</p>
+        <p>Press any key to continue.</p>`;
         var english1 = `
-        <p> Welcome to the experiment!</p>
-        <p> Press any key to begin. </p>`;
+        <p>In this task you will listen to a series of audio clips.</p>
+        <p>There are three parts parts to this experiment:</p>
+        <p>1. A <strong>test block</strong>, where you respond whether or not you can hear speech in the audio.</p>
+        <p>2. A <strong>listening block</strong>, where you don't need to make any choices - just listen.</p>
+        <p>3. Another <strong>test block</strong>, where you again respond whether or not you can hear speech in the audio.</p>
+        <p>Press any key to continue.</p>`;
 
         var english2 = `
         <p>Welcome to the server-side experiment!</p>
         <p>In this experiment, you will be presented with the words red and green. Please press the key "y" if the word is congruent or "n" if the word is incongruent.</p>
         <p>Press Space to continue.</p>`;
-        var english3 = (score) => {
+
+        var english3 = `
+        <p>In the <strong>test blocks</strong>, you will listen to a series of audio clips and will indicate whether you heard speech in each clip.</p>
+        <p>Press any key to continue.</p>;`;
+
+        var english4 = `
+        <p>In the <strong>listening block</strong>, you just have to listen to the audio recordings.<p>
+        <p>No response is required.</p>
+        <p>Speech can be anything from single words to whole sentences.</p>
+        <p>Press any key to continue.</p>`;
+
+        var english5 = `
+        <p>We will now begin the first test block.</p>`;
+
+        var english6 = `
+        <p>You will now hear some more audio clips.</p>
+        <p>You do not need to respond, just listen.</p>`;
+
+        var english7 = `
+        <p>We will now begin the second test block.</p>`;
+
+        var english8 = `
+        <p>Could you hear speech in the audio?</p>
+        <p>Press "1" for Yes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press "0" for No</p>`;
+
+        var english9 = (score) => {
             // Initialize the base HTML content.
             let htmlContent = `
                 <div class="body-white-theme">
@@ -70,7 +94,13 @@ switch (language) {
             english0,
             english1,
             english2,
-            (score) => english3(score), // Store it as a function that accepts score
+            english3,
+            english4,
+            english5,
+            english6,
+            english7,
+            english8,
+            (score) => english9(score), // Store it as a function that accepts score
         ];
         break;
 }

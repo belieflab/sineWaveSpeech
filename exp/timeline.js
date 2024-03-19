@@ -17,46 +17,33 @@ const preload = {
 const welcome = {
     type: jsPsychHtmlKeyboardResponse,
     on_load: () => toggleDebugMode(),
-    stimulus:
-        '<h1 style="color:white;">Welcome to the experiment!</h1>' +
-        '<p style="color:white;">Press any key to continue.</p>', //by default, jsPysch is white background and black text
+    stimulus: instructions[0],
 };
 
 /* define instructions trial */
 const instructions_1 = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus:
-        '<h2 style="color:white;">In this task you will listen to a series of audio clips.</h2>' +
-        '<h2 style="color:white;">The task is split into two test blocks, with a listening block in-between.</h2>' +
-        '<p style="color:white;">Press any key to continue.</p>',
+    stimulus: instructions[1],
 };
 
 const instructions_2 = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus:
-        '<h2 style="color:white;">In the test blocks you will listen to a series of audio clips, and will have to indicate whether you heard speech in each clip.</h2>' +
-        '<p style="color:white;">Press any key to continue.</p>',
+    stimulus: instructions[2],
 };
 
 const instructions_3 = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus:
-        '<h2 style="color:white;">In the listening block you just have to listen to several audio recordings. No response is required.</h2>' +
-        '<p style="color:white;">Press any key to continue.</p>',
+    stimulus: instructions[3],
 };
 
 const instructions_4 = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus:
-        '<h2 style="color:white;">We will now begin the first test block.</h2> ' +
-        '<p style="color:white;">Press any key to begin.</p>',
+    stimulus: instructions[4],
 };
 
 const beginListeningBlock = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus:
-        '<h2 style="color:white;">You will now hear some short sentences.</h2>' +
-        '<p style="color:white;">You do not need to respond, just listen.</p>',
+    stimulus: instructions[5],
     choices: "NO_KEYS",
     response_ends_trial: false,
     trial_duration: 10000,
@@ -64,8 +51,7 @@ const beginListeningBlock = {
 
 const beginSecondBlock = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus:
-        '<h2 style="color:white;">We will now begin the second test block.</h2',
+    stimulus: instructions[6],
     choices: "NO_KEYS",
     response_ends_trial: false,
     trial_duration: 10000,
@@ -107,10 +93,7 @@ const listeningStim = {
 
 const response = {
     type: jsPsychHtmlKeyboardResponse,
-    // stimulus: '<p style="color:white;">Could you hear a complete sentence in the audio?</p>' +
-    stimulus:
-        '<h1 style="color:white;">Could you hear a complete sentence in the audio?</h1>' +
-        '<h3 style="color:white;">Press "1" for Yes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press "0" for No</h3>',
+    stimulus: instructions[8],
     choices: ["1", "0"],
     response_ends_trial: true,
     data: jsPsych.timelineVariable("data"),
@@ -143,7 +126,7 @@ const dataSave = {
                 : jsPsych.data.get().select("score").values.slice(-1)[0]; // Replace 'score' with actual data key if necessary
 
         // Now, generate the thank you message with the updated score
-        const thankYou = instructions[3](updatedScore);
+        const thankYou = instructions[9](updatedScore);
 
         saveDataPromise(
             `${experimentAlias}_${subjectId}`,

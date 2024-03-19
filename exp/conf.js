@@ -28,4 +28,4 @@ const feedbackLink = undefined;
 
 // Global variables for sites and phenotypes
 const sites = ["WashU", "UChicago", "MPRC", "UMinnesota", "UCI"];
-const phenotypes = ["sz"];
+const phenotypes = ["hc", "sz"];
