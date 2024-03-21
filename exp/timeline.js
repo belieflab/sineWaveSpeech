@@ -93,7 +93,7 @@ const listeningStim = {
 
 const response = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: instructions[8],
+    stimulus: instructions[7],
     choices: ["1", "0"],
     response_ends_trial: true,
     data: jsPsych.timelineVariable("data"),

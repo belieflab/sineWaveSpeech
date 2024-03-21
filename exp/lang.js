@@ -27,35 +27,30 @@ switch (version) {
         <p>Press any key to continue.</p>`;
 
         var english2 = `
-        <p>Welcome to the server-side experiment!</p>
-        <p>In this experiment, you will be presented with the words red and green. Please press the key "y" if the word is congruent or "n" if the word is incongruent.</p>
-        <p>Press Space to continue.</p>`;
-
-        var english3 = `
         <p>In the <strong>test blocks</strong>, you will listen to a series of audio clips and will indicate whether you heard speech in each clip.</p>
         <p>Press any key to continue.</p>;`;
 
-        var english4 = `
+        var english3 = `
         <p>In the <strong>listening block</strong>, you just have to listen to the audio recordings.<p>
         <p>No response is required.</p>
         <p>Speech can be anything from single words to whole sentences.</p>
         <p>Press any key to continue.</p>`;
 
-        var english5 = `
+        var english4 = `
         <p>We will now begin the first test block.</p>`;
 
-        var english6 = `
+        var english5 = `
         <p>You will now hear some more audio clips.</p>
         <p>You do not need to respond, just listen.</p>`;
 
-        var english7 = `
+        var english6 = `
         <p>We will now begin the second test block.</p>`;
 
-        var english8 = `
+        var english7 = `
         <p>Could you hear speech in the audio?</p>
         <p>Press "1" for Yes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press "0" for No</p>`;
 
-        var english9 = (score) => {
+        var english8 = (score) => {
             // Initialize the base HTML content.
             let htmlContent = `
                 <div class="body-white-theme">
@@ -99,8 +94,7 @@ switch (language) {
             english5,
             english6,
             english7,
-            english8,
-            (score) => english9(score), // Store it as a function that accepts score
+            (score) => english8(score), // Store it as a function that accepts score
         ];
         break;
 }
