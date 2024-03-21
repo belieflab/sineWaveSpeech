@@ -28,12 +28,12 @@ switch (version) {
 
         var english2 = `
         <p>In the <strong>test blocks</strong>, you will listen to a series of audio clips and will indicate whether you heard speech in each clip.</p>
+        <p>Speech can be anything from single words to whole sentences.</p>
         <p>Press any key to continue.</p>;`;
 
         var english3 = `
         <p>In the <strong>listening block</strong>, you just have to listen to the audio recordings.<p>
         <p>No response is required.</p>
-        <p>Speech can be anything from single words to whole sentences.</p>
         <p>Press any key to continue.</p>`;
 
         var english4 = `

@@ -126,7 +126,7 @@ const dataSave = {
                 : jsPsych.data.get().select("score").values.slice(-1)[0]; // Replace 'score' with actual data key if necessary
 
         // Now, generate the thank you message with the updated score
-        const thankYou = instructions[9](updatedScore);
+        const thankYou = instructions[8](updatedScore);
 
         saveDataPromise(
             `${experimentAlias}_${subjectId}`,
