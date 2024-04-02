@@ -27,5 +27,5 @@ const adminEmail = "joshua.kenney@yale.edu";
 const feedbackLink = undefined;
 
 // Global variables for sites and phenotypes
-const sites = ["WashU", "UChicago", "MPRC", "UMinnesota", "UCI"];
+const sites = ["WashU", "UChicago", "Maryland", "UMN", "UCD"];
 const phenotypes = ["hc", "sz"];
