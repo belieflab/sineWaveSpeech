@@ -15,7 +15,7 @@ https://osf.io/preprints/psyarxiv/g75tc_v1
 
 ```bash
 git clone --recurse-submodules -j4 git@github.com:belieflab/sineWaveSpeech.git && cd sineWaveSpeech &&
-git submodule foreach --recursive 'git checkout $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo main)''
+git submodule foreach --recursive 'git checkout $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo main)'
 ```
 
 > 💡 This will initialize the `wrap` submodule
