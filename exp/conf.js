@@ -8,6 +8,9 @@
 // Options: true, false
 let debug = false; // Default debug mode setting for the experiment
 
+// hard coding a phase will override the randomization
+let phase = undefined;
+
 // Experiment Name
 const experimentName = "Sine Wave Speech"; // Name displayed in the browser title bar
 const experimentAlias = "sws"; // Unique identifier for the experiment, used in data saving
@@ -26,6 +29,28 @@ const version = "standard"; // Current version of the experiment
 const adminEmail = "joshua.kenney@yale.edu";
 const feedbackLink = undefined;
 
-// Global variables for sites and phenotypes
-const sites = ["WashU", "UChicago", "Maryland", "UMN", "UCD"];
-const phenotypes = ["hc", "sz"];
+// Repetitions
+const repetitions = {
+    production: undefined,
+    debug: undefined,
+};
+
+// Intake Settings
+const intake = {
+    subject: {
+        minLength: 7,
+        maxLength: 7,
+        prefix: "VIP",
+    },
+    sites: ["Vanderbilt"], // Add your sites here
+    phenotypes: ["sz"], // Add your phenotypes here
+    visits: [1, 3], // Define which visits are allowed (maps to stimulus sets 0, 1)
+    weeks: [], // Define which weeks are allowed if using weeks instead of visits
+};
+
+// Redirect Configuration (Daisy Chaining)
+const urlConfig = {
+    // redirect only
+    standard:
+        "https://yalesurvey.ca1.qualtrics.com/jfe/form/SV_bErtyAFIwnwDhWu",
+};
