@@ -5,3 +5,7 @@ For this task participants will hear audio clips and are asked to decide if they
 
 **Total run time: 10 minutes**
 
+'''
+git clone --recurse-submodules -j4 git@github.com:belieflab/prl.git && cd prl &&
+git submodule foreach --recursive 'git checkout $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo main)'
+'''
