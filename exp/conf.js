@@ -46,6 +46,7 @@ const intake = {
     phenotypes: ["sz"], // Add your phenotypes here
     visits: [1, 3], // Define which visits are allowed (maps to stimulus sets 0, 1)
     weeks: [], // Define which weeks are allowed if using weeks instead of visits
+    nih: false,
 };
 
 // Redirect Configuration (Daisy Chaining)
