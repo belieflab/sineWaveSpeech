@@ -22,7 +22,11 @@ const language = "english"; // Language setting for the experiment
 // Options: "light", "dark"
 const theme = "dark"; // Default theme setting for the user interface
 
-const version = "standard"; // Current version of the experiment
+// "correct-stim" marks data collected with the corrected stimulus set:
+// disjoint intel/unintel target sets, matched to their clear originals by
+// BKBQ target id, and disjoint pre/post pools. Written to every row as
+// data.version by wrap/lib/ids.php.
+const version = "correct-stim"; // Current version of the experiment
 // Add additional global configuration constants here
 
 // Note: Uncomment the desired options. Ensure only one option per setting is active at a time.
@@ -50,8 +54,24 @@ const intake = {
 };
 
 // Redirect Configuration (Daisy Chaining)
+// Keys are looked up by `version` in getRedirectLink (wrap/lib/redirect.js:32),
+// which falls back to urlConfig.default when the version has no entry. Both the
+// current and previous version names are mapped, and `default` is set so a
+// future version rename cannot produce an undefined redirect URL.
 const urlConfig = {
     // redirect only
+    "correct-stim":
+        "https://yalesurvey.ca1.qualtrics.com/jfe/form/SV_bErtyAFIwnwDhWu",
     standard:
         "https://yalesurvey.ca1.qualtrics.com/jfe/form/SV_bErtyAFIwnwDhWu",
+    default:
+        "https://yalesurvey.ca1.qualtrics.com/jfe/form/SV_bErtyAFIwnwDhWu",
 };
+
+// Number of utterances sampled PER CONDITION. intel and unintel are disjoint
+// target sets, so each is sampled independently and all three blocks present
+// 2 x numberTestTrials trials: the test blocks the degraded stimuli, the
+// listening block their clear originals. 90 audio trials at the current value.
+// Pool per visit: visit 1 (pre) 41 intel / 42 unintel, visit 3 (post) 41 / 41,
+// so the max is 41. Exceeding it aborts with a setup error in exp/main.js.
+const numberTestTrials = 15;

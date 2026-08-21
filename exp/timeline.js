@@ -6,10 +6,13 @@ const jsPsych = initJsPsych({
 
 const timeline = [];
 
+// audio is populated by exp/main.js once the visit pool is resolved and the
+// trial pools are sampled, so only the files this run will actually play are
+// fetched (a flat array of paths).
 const preload = {
     type: jsPsychPreload,
     images: [],
-    audio: [intelligible, unintelligible, unaltered],
+    audio: [],
     show_detailed_errors: true,
 };
 
